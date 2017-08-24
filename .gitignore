@@ -1,0 +1,12 @@
+build
+composer.lock
+docs
+vendor
+
+*.iml
+.idea/
+*.ipr
+*.iws
+out/
+.idea_modules/
+atlassian-ide-plugin.xml

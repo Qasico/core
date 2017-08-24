@@ -1,0 +1,48 @@
+{
+    "name": "qasico/core",
+    "type": "library",
+    "description": "Qasico Application Platform",
+    "authors": [
+        {
+            "name": "PT. Qasico Teknologi Indonesia",
+            "email": "admin@qasico.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0.0",
+        "ext-curl": "*",
+        "laravel/framework": "5.5.*",
+        "laravel/tinker": "~1.0",
+        "guzzlehttp/guzzle": "~6.0",
+        "predis/predis": "^1.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "4.*",
+        "mockery/mockery": "0.9.*",
+        "fzaninotto/faker": "~1.4",
+        "squizlabs/php_codesniffer": "~2.3",
+        "symfony/dom-crawler": "2.8.*|3.0.*",
+        "symfony/css-selector": "2.8.*|3.0.*",
+        "hot/phpunit-runner": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "Core\\": "src"
+        },
+        "files": [
+            "src/Helpers/app.php",
+            "src/Helpers/utils.php",
+            "src/Helpers/template.php"
+        ]
+    },
+    "scripts": {
+        "test": "phpunit"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
