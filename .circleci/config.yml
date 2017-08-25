@@ -36,5 +36,4 @@ jobs:
             - vendor
         
       # run tests!
-      - run: echo "Running PHPUnit Tests"
       - run: php vendor/bin/phpunit --colors --debug  --coverage-text

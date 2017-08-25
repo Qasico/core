@@ -1,0 +1,52 @@
+<?php
+
+namespace App\{{MODULE_NAME}}\Providers;
+
+use Core\Providers\ModuleServiceProvider;
+
+class {{MODULE_NAME}}ServiceProvider extends ModuleServiceProvider
+{
+    /**
+     * The names of module
+     *
+     * @var string
+     */
+    protected $module = '{{MODULE_NAME_LC}}';
+
+    /**
+     * The controller namespace for the module.
+     *
+     * @var string
+     */
+    protected $namespaces = 'App\{{MODULE_NAME}}\Controllers';
+    
+    /**
+     * Define module view path.
+     *
+     * @return string
+     */
+    public function view()
+    {
+        return __DIR__ . '/../Resources/views';
+    }
+    
+    /**
+     * Define module translator path.
+     *
+     * @return string
+     */
+    public function lang()
+    {
+        return __DIR__ . '/../Resources/lang';
+    }
+
+    /**
+     * Define module routes files.
+     *
+     * @return mixed
+     */
+    public function routes()
+    {
+        return __DIR__ . '/../routes.php';
+    }
+}

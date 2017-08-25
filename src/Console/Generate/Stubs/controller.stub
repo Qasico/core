@@ -1,0 +1,18 @@
+<?php
+
+namespace App\{{MODULE_NAME}}\Controllers;
+
+use Illuminate\Routing\Controller;
+
+class {{MODULE_NAME}}Controller extends Controller
+{
+    /**
+     * {{MODULE_NAME}} Index Controller.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function getIndex()
+    {
+        return view('{{MODULE_NAME_LC}}::index');
+    }
+}

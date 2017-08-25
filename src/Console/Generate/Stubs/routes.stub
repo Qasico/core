@@ -1,0 +1,3 @@
+<?php
+
+$router->get('/{{MODULE_NAME_LC}}', ['uses' => '{{MODULE_NAME}}Controller@getIndex'])->name('{{MODULE_NAME_LC}}');
