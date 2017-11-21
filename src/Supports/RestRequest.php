@@ -257,6 +257,11 @@ class RestRequest
             $sorting       = $prefix . $sort;
             $this->orderby = is_array($this->orderby) ? array_merge($sorting, $this->orderby) : $sorting;
         }
+        
+        // implement new orderby query string
+        if ($orderby = $this->input('orderby')) {
+            $this->orderby = is_array($this->orderby) ? array_merge($orderby, $this->orderby) : $orderby;
+        }
 
         return $this;
     }
