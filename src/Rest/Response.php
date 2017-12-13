@@ -66,7 +66,7 @@ class Response
     {
         return static::$response;
     }
-
+    
     /**
      * Get all data resources.
      *
@@ -77,8 +77,29 @@ class Response
         if ($this->isEmpty()) {
             return false;
         }
-
+        
         return $this->data;
+    }
+    
+    /**
+     * merge data resources.
+     * use this method if necessary
+     *
+     * @param $data
+     * @return array
+     */
+    public function mergeData($data)
+    {
+        if (!$this->isEmpty() && is_array($data)) {
+            // merging data
+            $data = array_merge($data, $this->data);
+            $data = new Collection($data);
+            
+            // remove duplicate data filtered by its id
+            $this->data = $data->unique('id')->values()->all();
+        }
+        
+        return $this;
     }
 
     /**
