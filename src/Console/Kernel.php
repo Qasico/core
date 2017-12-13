@@ -14,6 +14,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         'Core\Console\Generate\Module',
+        'Core\Console\Generate\Version',
     ];
 
     /**
