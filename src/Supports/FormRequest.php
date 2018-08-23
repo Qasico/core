@@ -120,16 +120,17 @@ class FormRequest extends BaseRequest
 
         return array_get($input, $key, $default);
     }
-
+    
     /**
      * Create response formater automatically
      * known if the request is ajax or not
      *
      * @param \Illuminate\Http\Response $response
      * @param bool                      $is_success
+     * @param array                     $data
      * @return JsonResponse
      */
-    public function makeResponse($response, $is_success = false)
+    public function makeResponse($response, $is_success = false, array $data = [])
     {
         if ($this->response_message != null) {
             $status = ($is_success != false) ? 'success' : 'danger';
@@ -144,7 +145,7 @@ class FormRequest extends BaseRequest
                 'Message'  => $this->response_message,
                 'Reload'   => $this->response_element,
             );
-
+            
             // check if response contains errors
             if ($is_success == false) {
                 $response_data   = ($errors = $response->getSession()->pull('errors')) ? $errors->toArray() : ['failed'];
@@ -152,6 +153,10 @@ class FormRequest extends BaseRequest
             } else {
                 $response_data   = ['success'];
                 $response_status = 200;
+                
+                if($data){
+                    $response_data = [$data];
+                }
             }
 
             return new JsonResponse($response_data, $response_status, $header);
