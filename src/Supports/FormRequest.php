@@ -130,7 +130,7 @@ class FormRequest extends BaseRequest
      * @param array                     $data
      * @return JsonResponse
      */
-    public function makeResponse($response, $is_success = false, array $data = [])
+    public function makeResponse($response, $is_success = false, $data = [])
     {
         if ($this->response_message != null) {
             $status = ($is_success != false) ? 'success' : 'danger';
