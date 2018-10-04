@@ -121,7 +121,6 @@ class Request
                 }
             ]);
 
-
         } catch (ConnectException $e) {
             throw new \Exception("System was offline.", 500);
         } catch (RequestException $e) {
