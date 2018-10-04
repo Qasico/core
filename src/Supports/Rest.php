@@ -118,9 +118,8 @@ class Rest
      */
     public function read($path, array $query = [])
     {
-//        return ($this->getCache()) ? $this->fromCache($path, $this->requestParameter()) : $this->fromRest($path, $this->requestParameter());
         $query = array_merge($query, $this->requestParameter());
-        
+
         return $this->fromRest($path, $query);
     }
 
@@ -266,8 +265,6 @@ class Rest
      */
     protected function fromRest($path, array $parameter = [])
     {
-
-
         return $this->getRequest()->get($path, $parameter, $this->getHeader());
     }
 }

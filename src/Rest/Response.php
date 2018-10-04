@@ -34,6 +34,11 @@ class Response
     protected $total = 0;
 
     /**
+     * @var bool|mixed
+     */
+    protected $file;
+
+    /**
      * @var string
      */
     protected $message;
@@ -54,6 +59,10 @@ class Response
             if ($data = $this->getContent('data')) {
                 $this->data = (array) $data;
             }
+
+            if ($file = $this->getContent('file')) {
+                $this->file = $file;
+            }
         } else {
             $this->message = $this->getContent('errors');
         }
@@ -66,7 +75,7 @@ class Response
     {
         return static::$response;
     }
-    
+
     /**
      * Get all data resources.
      *
@@ -77,10 +86,29 @@ class Response
         if ($this->isEmpty()) {
             return false;
         }
-        
+
         return $this->data;
     }
-    
+
+    public function download()
+    {
+        if ($file = $this->file) {
+            return response()->download(public_path($file));
+        }
+
+        return abort(404);
+    }
+
+    /**
+     * Get file path
+     *
+     * @return string
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+
     /**
      * merge data resources.
      * use this method if necessary
@@ -94,11 +122,11 @@ class Response
             // merging data
             $data = array_merge($data, $this->data);
             $data = new Collection($data);
-            
+
             // remove duplicate data filtered by its id
             $this->data = $data->unique('id')->values()->all();
         }
-        
+
         return $this;
     }
 
