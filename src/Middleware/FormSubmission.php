@@ -22,7 +22,7 @@ class FormSubmission
         $cache         = Cache::tags(["mw_submissions"]);
         $submission    = false;
         $url_requested = $request->url();
-        $keys          = 1 . $url_requested;
+        $keys          = 1 . $url_requested . '.' . $request->user()->token;
 
         // run only for production
         if ($request->method() != "GET" && app()->environment() != "local") {
